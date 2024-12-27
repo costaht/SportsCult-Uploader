@@ -1,56 +1,104 @@
-arize uploads to Sports Cult
+# **Sports Cult Uploader**
 
-## **What does it do?**
+A script designed to simplify and standardize the process of uploading content to Sports Cult.
 
-* Generates media info of the file
+## **Features**
 
-* Takes screenshots and host them automatically on imgbb
+- Automatically generates detailed media information for the file.
+- Captures screenshots and hosts them on imgbb.
+- Uploads the torrent to Sports Cult.
+- Starts seeding automatically on qBittorrent.
 
-* Uploads the torrent to Sports Cult
+---
 
-* Start seeding on qBitorrent automatically
+## **Setup Instructions**
 
-## Setup:
-
-1. Clone this repo to your system
+1. **Clone the repository**  
+   Run the following command to clone the repository to your system:
    
-   `git clone https://github.com/costaht/SportsCult-Uploader.git`
+   ```bash
+   git clone https://github.com/costaht/SportsCult-Uploader.git
+   ```
 
-2. Create a python virtual environment into the newly created directory
+2. **Create a Python virtual environment**  
+   Navigate to the newly created directory and set up a virtual environment:
    
-   `cd SportsCult-Uploader`
-   `python -m venv venv`
+   ```bash
+   cd SportsCult-Uploader
+   python -m venv venv
+   ```
 
-3. Activate the venv and install the requirements
+3. **Activate the virtual environment and install dependencies**
    
-   `source venv/bin/activate` # Linux
-   `.\venv\Scripts\activate` # Windows
-   `pip install -U -r requirements.txt`
-
-4. Install the external dependencies `[ffmpeg](https://windowsloop.com/install-ffmpeg-windows-10/)` and `mediainfo`
-
-5. Fill up the the config file `sportscult.conf`
-
-6. 
-
-## Usage:
-
-1. Go to SportsCult-Uploader directory
-
-2. Activate the virtual environment
+   - **Linux**:
+     
+     ```bash
+     source venv/bin/activate
+     ```
    
-   `source venv/bin/activate` # Linux
+   - **Windows**:
+     
+     ```bash
+     .\venv\Scripts\activate
+     ```
    
-   `.\venv\Scripts\activate` # Windows
+   Install the required Python packages:
 
-3. Run the command:
+```bash
+pip install -U -r requirements.txt
+```
+
+4. **Install external dependencies**  
+   Download and install the following tools:
    
-   `python upload.py -c uploadCategory VideoFile.mkv/Folder`
+   - [ffmpeg](https://windowsloop.com/install-ffmpeg-windows-10/)
+   - mediainfo
 
-Use `--help` for more details
+5. **Configure the script**  
+   Edit the configuration file `sportscult.conf` with the necessary settings.
 
-## Attention:
+---
 
-* Folders will be treated as Season. A single torrent will be created to the entire folder.
+## **Usage Instructions**
 
-* Categories that have space in them should be "beteween quotes"
+1. **Navigate to the script's directory**
+   
+   ```bash
+   cd SportsCult-Uploader
+   ```
+
+2. **Activate the virtual environment**
+   
+   - **Linux**:
+     
+     ```bash
+     source venv/bin/activate
+     ```
+   
+   - **Windows**:
+     
+     ```bash
+     .\venv\Scripts\activate
+     ```
+
+3. **Run the upload command**
+   
+   ```bash
+   python upload.py -c uploadCategory VideoFile.mkv/Folder
+   ```
+   
+   Use the `--help` flag to see additional options and details:
+   
+   ```bash
+   python upload.py --help
+   ```
+
+---
+
+## **Important Notes**
+
+- **Folder Handling**:  
+  If you specify a folder, the script will treat it as a season and create a single torrent for the entire folder.
+
+- **Category Names with Spaces**:  
+  For categories with spaces in their names, enclose the category name in double quotes (e.g., `"Sports Events"`).
