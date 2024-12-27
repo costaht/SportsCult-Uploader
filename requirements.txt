@@ -1,0 +1,5 @@
+ffmpeg_python==0.2.0
+pymediainfo==6.1.0
+Requests==2.32.3
+torf==4.2.7
+tqdm==4.67.1
