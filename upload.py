@@ -127,7 +127,7 @@ def generate_mediainfo(video_file, meta_dir, isdir):
         with open(nfo_file, "w", encoding="utf-8") as file:
             file.write(media_info)
 
-        print(f"Mediainfo saved to: {nfo_file}")
+        print(f"Mediainfo saved to: {nfo_file.name}")
         return nfo_file
 
     except Exception as e:
