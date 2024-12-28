@@ -22,7 +22,7 @@ def print_banner():
         "\033[97m     ░╚═══██╗██╔═══╝░██║░░██║██╔══██╗░░░██║░░░░╚═══██╗  ██║░░██╗██║░░░██║██║░░░░░░░░██║░░░\033[38;5;208m    (  ||      ||  )\n"
         "\033[97m     ██████╔╝██║░░░░░╚█████╔╝██║░░██║░░░██║░░░██████╔╝  ╚█████╔╝╚██████╔╝███████╗░░░██║░░░\033[38;5;208m     './/      \\\\.'\n"
         "\033[97m     ╚═════╝░╚═╝░░░░░░╚════╝░╚═╝░░╚═╝░░░╚═╝░░░╚═════╝░  ░╚════╝░░╚═════╝░╚══════╝░░░╚═╝░░░\033[38;5;208m       `'-=..=-'`\n"
-        "\033[38;5;196m                                                                                  𝗨𝗣𝗟𝗢𝗔𝗗𝗘𝗥\033[0m\n"
+        "\033[38;5;196m                                                                                  UPLOADER\033[0m\n"
     )
     print(banner)
 
@@ -285,10 +285,10 @@ def upload_to_sports_cult(video_file, nfo_file, cookie, thumb_file_path, categor
     data = {
         "user_id": None,
         "category": category_id,  # SportsCult category ID
-        "filename": torrent_path.name,
+        "filename": torrent_path.stem,
         "fontchange": None,
         "anonymous": anonymous,        
-        "info": f"{thumb_content}\n{nfo_content}\n[url=https://github.com/costaht/sportscult-uploader]Uploaded with Sports Cult Uploader[/url]",
+        "info": f"{thumb_content}\n{nfo_content}\n[url=https://github.com/costaht/sportscult-uploader][color=red]Uploaded with Sports Cult Uploader[/color][/url]",
     }
 
     # Make the upload request to SportsCult
