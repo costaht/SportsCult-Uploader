@@ -111,8 +111,8 @@ from pathlib import Path
 
 def generate_mediainfo(video_file, meta_dir, isdir):
     try:
-        media_info = MediaInfo.parse(video_file, output="STRING", full=False, mediainfo_options={'inform_version' : '1'})
-
+        media_info = MediaInfo.parse(video_file, output="STRING", full=False, mediainfo_options={'inform_version': '1'})
+        
         media_info = re.sub(
             r"(Complete name\s+:)\s?.+", r"\1 {0}".format(video_file.name), media_info
         )
@@ -124,7 +124,7 @@ def generate_mediainfo(video_file, meta_dir, isdir):
 
         nfo_file = Path(meta_dir) / f"{nfo_name}.nfo"
 
-        with open(nfo_file, "w", encoding="utf-8") as file:
+        with open(nfo_file, "w", encoding="utf-8", newline="") as file:
             file.write(media_info)
 
         print(f"Mediainfo saved to: {nfo_file.name}")
@@ -251,7 +251,7 @@ def generate_torrent(video_file, meta_dir, pid, isdir):
     return torrent_path
 
 
-def upload_to_sports_cult(video_file, nfo_file, cookie, thumb_file_path, category_id, meta_dir, anonymous, torrent_path, isdir):
+def upload_to_sports_cult(video_file, nfo_file, cookie, user_agent, thumb_file_path, category_id, meta_dir, anonymous, torrent_path, isdir):
     
     config = read_sportscult_config()
     qb_address = config.get("qb_address", "http://localhost")
@@ -270,7 +270,7 @@ def upload_to_sports_cult(video_file, nfo_file, cookie, thumb_file_path, categor
         "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
         "cookie": cookie,
         "referer": "https://sportscult.org/index.php?page=upload",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+        "user-agent": user_agent,
     }
 
     files = {
@@ -362,6 +362,7 @@ def main():
     path = Path(video_file_or_directory)
     config = read_sportscult_config()
     cookie = config.get("cookie")
+    user_agent = config.get("user_agent")
     pid = config.get("pid")
     imgbb_api_key = config.get("imgbb_api_key")
 
@@ -400,13 +401,13 @@ def main():
 
     if auto_confirm:
         print("Proceeding with upload...")
-        upload_to_sports_cult(video_file, nfo_file, cookie, thumb_file_path, category_id, meta_dir, anonymous, torrent_path, isdir)
+        upload_to_sports_cult(video_file, nfo_file, cookie, user_agent, thumb_file_path, category_id, meta_dir, anonymous, torrent_path, isdir)
     else:
         while True:
             response = input("Everything is ready to upload. Do you want to proceed? (y/n): ").strip().lower()
             if response == "y":
                 print("Proceeding with upload...")
-                upload_to_sports_cult(video_file, nfo_file, cookie, thumb_file_path, category_id, meta_dir, anonymous, torrent_path, isdir)
+                upload_to_sports_cult(video_file, nfo_file, cookie, user_agent, thumb_file_path, category_id, meta_dir, anonymous, torrent_path, isdir)
                 break
             elif response == "n":
                 print("Upload cancelled.")

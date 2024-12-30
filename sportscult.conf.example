@@ -9,6 +9,9 @@ imgbb_api_key=
 # Cookie value for authentication (you can get this from your browser's developer tools -> Request Headers) - From "uid" to the end
 cookie=
 
+# User-Agent. Also from the Request Headers
+user_agent=
+
 # qBitorrent config
 qb_address=http://localhost
 qb_port=8080
