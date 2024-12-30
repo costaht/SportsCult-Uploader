@@ -288,7 +288,7 @@ def upload_to_sports_cult(video_file, nfo_file, cookie, user_agent, thumb_file_p
         "filename": torrent_path.stem,
         "fontchange": None,
         "anonymous": anonymous,        
-        "info": f"{thumb_content}\n{nfo_content}\n[url=https://github.com/costaht/sportscult-uploader][color=red]Uploaded with Sports Cult Uploader[/color][/url]",
+        "info": f"{thumb_content}\n[code]{nfo_content}[/code][url=https://github.com/costaht/sportscult-uploader][color=red]Uploaded with Sports Cult Uploader[/color][/url]",
     }
 
     # Make the upload request to SportsCult
