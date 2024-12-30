@@ -6,7 +6,7 @@ pid=
 # Create an API number here https://api.imgbb.com/
 imgbb_api_key=
 
-# Cookie value for authentication (you can get this from your browser's developer tools -> Request Headers) - From "uid" to the end
+# Cookie value for authentication (you can get this from your browser's developer tools -> Request Headers)
 cookie=
 
 # User-Agent. Also from the Request Headers
